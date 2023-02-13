@@ -563,6 +563,7 @@ httpStatus	tests/integration/payments.test.ts	/^import httpStatus from "http-sta
 httpStatus	tests/integration/tickets.test.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/users.test.ts	/^import httpStatus from "http-status";$/;"	I
 id	src/controllers/users-controller.ts	/^      id: user.id,$/;"	m
+id	src/repositories/booking-repository/index.ts	/^      id: bookingId$/;"	m
 id	src/repositories/booking-repository/index.ts	/^      id: true,$/;"	m
 id	src/repositories/hotel-repository/index.ts	/^      id: hotelId,$/;"	m
 id	src/repositories/ticket-repository/index.ts	/^      id: ticketId,$/;"	m
@@ -949,6 +950,8 @@ uf	tests/factories/enrollments-factory.ts	/^    uf: "SP",$/;"	m
 unauthorizedError	src/errors/unauthorized-error.ts	/^export function unauthorizedError(): ApplicationError {$/;"	f
 update	src/repositories/address-repository/index.ts	/^    update: updatedAddress,$/;"	m
 update	src/repositories/enrollment-repository/index.ts	/^    update: updatedEnrollment,$/;"	m
+updateBooking	src/repositories/booking-repository/index.ts	/^async function updateBooking(roomId: number, bookingId: number) {$/;"	f
+updatedAt	src/repositories/booking-repository/index.ts	/^      updatedAt: new Date()$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString()$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString(),$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdRoom.updatedAt.toISOString(),$/;"	m

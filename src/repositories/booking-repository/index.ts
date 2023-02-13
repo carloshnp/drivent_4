@@ -22,7 +22,7 @@ async function postBooking(userId: number, roomId: number) {
 }
 
 async function updateBooking(roomId: number, bookingId: number) {
-  return prisma.booking.update({
+  return await prisma.booking.update({
     where: {
       id: bookingId
     },
@@ -33,10 +33,22 @@ async function updateBooking(roomId: number, bookingId: number) {
   });
 }
 
+async function getEmptyRoom(roomId: number) {
+  return await prisma.room.findUnique({
+    where: {
+      id: roomId
+    },
+    include: {
+      Booking: true
+    }
+  });
+}
+
 const bookingRepository = {
   getBooking,
   postBooking,
-  updateBooking  
+  updateBooking,
+  getEmptyRoom
 };
 
 export default bookingRepository;

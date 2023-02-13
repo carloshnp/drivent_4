@@ -1,5 +1,5 @@
 import app, { init } from "@/app";
-import { createBooking, createEnrollmentWithAddress, createHotel, createPayment, createRoomWithHotelId, createTicket, createTicketTypeWithHotel, createUser } from "../factories";
+import { createBooking, createEnrollmentWithAddress, createHotel, createPayment, createRoomWithHotelId, createTicket, createTicketTypeRemote, createTicketTypeWithHotel, createUser } from "../factories";
 import faker from "@faker-js/faker";
 import httpStatus from "http-status";
 import supertest from "supertest";
@@ -41,6 +41,31 @@ describe("POST /booking", () => {
   });
 
   describe("when token is valid", () => {
+    it("should respond with status 400 if no body", async () => {
+      const user = await createUser();
+      const token = await generateValidToken(user);
+      const enrollment = await createEnrollmentWithAddress(user);
+      const ticketType = await createTicketTypeRemote();
+      const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+      const payment = await createPayment(ticket.id, ticketType.price);
+      const hotel = await createHotel();
+      const res = await server.post("/booking").set("Authorization", `Bearer ${token}`);
+      expect(res.status).toBe(httpStatus.BAD_REQUEST);
+    });
+    
+    it("should respond with status 400 if body is invalid", async () => {
+      const user = await createUser();
+      const token = await generateValidToken(user);
+      const enrollment = await createEnrollmentWithAddress(user);
+      const ticketType = await createTicketTypeRemote();
+      const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+      const payment = await createPayment(ticket.id, ticketType.price);
+      const hotel = await createHotel();
+      const body = { [faker.lorem.word()]: faker.lorem.word() };
+      const res = await server.post("/booking").set("Authorization", `Bearer ${token}`).send(body);
+      expect(res.status).toBe(httpStatus.BAD_REQUEST);
+    });
+
     it("should respond with status 200 when booking is valid", async () => {
       const user = await createUser();
       const token = await generateValidToken(user);
@@ -84,6 +109,29 @@ describe("GET /booking", () => {
           createdAt: expect.any(String),
           updatedAt: expect.any(String)
         }
+      });
+    });
+  });
+});
+
+describe("PUT /booking", () => {
+  describe("when token is valid", () => {
+    it("should respond with status 200 when booking is valid", async () => {
+      const user = await createUser();
+      const token = await generateValidToken(user);
+      const enrollment = await createEnrollmentWithAddress(user);
+      const ticketType = await createTicketTypeWithHotel();
+      const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+      const payment = await createPayment(ticket.id, ticketType.price);
+      const hotel = await createHotel();
+      const room = await createRoomWithHotelId(hotel.id);
+      const booking = await createBooking(user.id, room.id);
+      const updatedRoom = await createRoomWithHotelId(hotel.id);
+      const body = { roomId: updatedRoom.id };
+      const res = await server.put(`/booking/${booking.id}`).set("Authorization", `Bearer ${token}`).send(body);
+      expect(res.status).toBe(httpStatus.OK);
+      expect(res.body).toEqual({
+        bookingId: expect.any(Number)
       });
     });
   });

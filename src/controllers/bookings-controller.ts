@@ -9,7 +9,10 @@ export async function getBookings(req: AuthenticatedRequest, res: Response) {
     const booking = await bookingService.getBooking(userId);
     return res.status(httpStatus.OK).send(booking);
   } catch (err) {
-    return res.sendStatus(httpStatus.NOT_FOUND);
+    if (err.message === "NOT_FOUND") {
+      return res.sendStatus(httpStatus.NOT_FOUND);
+    }
+    return res.sendStatus(httpStatus.BAD_REQUEST);
   }
 }
 
@@ -20,7 +23,13 @@ export async function postBookings(req: AuthenticatedRequest, res: Response) {
     const booking = await bookingService.postBooking(userId, parseInt(roomId));
     return res.status(httpStatus.OK).send({ bookingId: booking.id });
   } catch (err) {
-    return res.sendStatus(httpStatus.NOT_FOUND);
+    if (err.message === "FORBIDDEN") {
+      return res.sendStatus(httpStatus.FORBIDDEN);
+    }
+    if (err.name === "NotFoundError") {
+      return res.sendStatus(httpStatus.NOT_FOUND);
+    }
+    return res.sendStatus(httpStatus.BAD_REQUEST);
   }
 }
 
@@ -29,9 +38,15 @@ export async function updateBookings(req: AuthenticatedRequest, res: Response) {
   const { roomId } = req.body;
   const { bookingId } = req.params;
   try {
-    const updatedBooking = bookingService.updateBooking(userId, roomId, parseInt(bookingId));
-    return res.status(httpStatus.OK).send(updatedBooking);
+    const updatedBooking = await bookingService.updateBooking(userId, roomId, parseInt(bookingId));
+    return res.status(httpStatus.OK).send({ bookingId: updatedBooking.id });
   } catch (err) {
-    return res.sendStatus(httpStatus.NOT_FOUND);
+    if (err.message === "FORBIDDEN") {
+      return res.sendStatus(httpStatus.FORBIDDEN);
+    }
+    if (err.name === "notFoundError") {
+      return res.sendStatus(httpStatus.NOT_FOUND);
+    }
+    return res.sendStatus(httpStatus.BAD_REQUEST);
   }
 }

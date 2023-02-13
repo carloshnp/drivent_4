@@ -1979,6 +1979,7 @@ expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpS
 expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.OK);$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.body).toEqual({$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
+expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.NOT_FOUND);$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.OK);$/;"	m
 expect	tests/integration/booking.test.ts	/^    expect(res.status).toBe(httpStatus.UNAUTHORIZED);$/;"	m
 expect	tests/integration/enrollments.test.ts	/^        expect(addresses.length).toEqual(1);$/;"	m
@@ -2281,6 +2282,7 @@ it	tests/integration/booking.test.ts	/^      it("should respond with status 404 
 it	tests/integration/booking.test.ts	/^    it("should respond with status 200 when booking is valid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^    it("should respond with status 400 if body is invalid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^    it("should respond with status 400 if no body", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^    it("should respond with status 404 if no booking", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if no session", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if no token", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if token is invalid", async () => {$/;"	m

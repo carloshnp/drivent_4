@@ -8,8 +8,14 @@ async function getBooking(userId: number) {
   return userBooking;
 }
 
+async function postBooking(userId: number, roomId: number) {
+  const booking = await bookingRepository.postBooking(roomId, userId);
+  return booking;
+}
+
 const bookingService = {
-  getBooking
+  getBooking,
+  postBooking
 };
 
 export default bookingService;

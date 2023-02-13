@@ -290,6 +290,7 @@ cvv	tests/factories/payments-factory.ts	/^    cvv: faker.datatype.number({ min: 
 data	prisma/seed.ts	/^      data: {$/;"	m
 data	src/errors/request-error.ts	/^    data: null,$/;"	m
 data	src/protocols.ts	/^  data: object | null,$/;"	m
+data	src/repositories/booking-repository/index.ts	/^    data: {$/;"	m
 data	src/repositories/payment-repository/index.ts	/^    data: {$/;"	m
 data	src/repositories/ticket-repository/index.ts	/^    data: {$/;"	m
 data	tests/factories/enrollments-factory.ts	/^    data: {$/;"	m
@@ -864,6 +865,8 @@ phone	tests/integration/enrollments.test.ts	/^        phone: "(21) 98999-9999",$
 phone	tests/integration/enrollments.test.ts	/^        phone: enrollment.phone,$/;"	m
 phone	tests/schemas/enrollments-schemas.test.ts	/^    phone: "(21) 98999-9999",$/;"	m
 plugins	.eslintrc.js	/^  plugins: ["@typescript-eslint", "boundaries"],$/;"	P
+postBooking	src/repositories/booking-repository/index.ts	/^async function postBooking(userId: number, roomId: number) {$/;"	f
+postBooking	src/services/bookings-service/index.ts	/^async function postBooking(userId: number, roomId: number) {$/;"	f
 postBookings	src/controllers/bookings-controller.ts	/^export async function postBookings(req: AuthenticatedRequest, res: Response) {$/;"	f
 postCreateOrUpdateEnrollment	src/controllers/enrollments-controller.ts	/^export async function postCreateOrUpdateEnrollment(req: AuthenticatedRequest, res: Response) {$/;"	f
 preset	jest.config.js	/^  preset: "ts-jest",$/;"	P

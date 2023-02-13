@@ -1757,6 +1757,7 @@ birthday	tests/integration/enrollments.test.ts	/^            birthday: dayjs(bod
 birthday	tests/integration/enrollments.test.ts	/^        birthday: enrollment.birthday.toISOString(),$/;"	m
 birthday	tests/integration/enrollments.test.ts	/^        birthday: faker.date.past().toISOString(),$/;"	m
 birthday	tests/schemas/enrollments-schemas.test.ts	/^    birthday: faker.date.past().toISOString(),$/;"	m
+bookingId	tests/integration/booking.test.ts	/^          bookingId: expect.any(Number)$/;"	m
 bookingId	tests/integration/booking.test.ts	/^        bookingId: expect.any(Number)$/;"	m
 bookingRepository	src/services/bookings-service/index.ts	/^import bookingRepository from "@\/repositories\/booking-repository";$/;"	I
 bookingService	src/controllers/bookings-controller.ts	/^import bookingService from "@\/services\/bookings-service";$/;"	I
@@ -1830,6 +1831,7 @@ createTicket	tests/factories/tickets-factory.ts	/^export async function createTi
 createTicketType	tests/factories/tickets-factory.ts	/^export async function createTicketType() {$/;"	f
 createTicketTypeRemote	tests/factories/tickets-factory.ts	/^export async function createTicketTypeRemote() {$/;"	f
 createTicketTypeWithHotel	tests/factories/tickets-factory.ts	/^export async function createTicketTypeWithHotel() {$/;"	f
+createTicketTypeWithoutHotel	tests/factories/tickets-factory.ts	/^export async function createTicketTypeWithoutHotel() {$/;"	f
 createUser	src/services/users-service/index.ts	/^export async function createUser({ email, password }: CreateUserParams): Promise<User> {$/;"	f
 createUser	tests/factories/users-factory.ts	/^export async function createUser(params: Partial<User> = {}): Promise<User> {$/;"	f
 createUserSchema	src/schemas/users-schemas.ts	/^export const createUserSchema = Joi.object<CreateUserParams>({$/;"	v
@@ -1871,6 +1873,7 @@ desc	coverage/lcov-report/sorter.js	/^            desc: false$/;"	P
 describe	tests/integration/authentication.test.ts	/^    describe("when credentials are valid", () => {$/;"	m
 describe	tests/integration/authentication.test.ts	/^  describe("when body is valid", () => {$/;"	m
 describe	tests/integration/authentication.test.ts	/^describe("POST \/auth\/sign-in", () => {$/;"	m
+describe	tests/integration/booking.test.ts	/^    describe("when body is valid", () => {$/;"	m
 describe	tests/integration/booking.test.ts	/^  describe("when token is valid", () => {$/;"	m
 describe	tests/integration/booking.test.ts	/^describe("GET \/booking", () => {$/;"	m
 describe	tests/integration/booking.test.ts	/^describe("POST \/booking", () => {$/;"	m
@@ -1970,6 +1973,9 @@ expect	tests/integration/authentication.test.ts	/^        expect(response.body.u
 expect	tests/integration/authentication.test.ts	/^        expect(response.status).toBe(httpStatus.OK);$/;"	m
 expect	tests/integration/authentication.test.ts	/^      expect(response.status).toBe(httpStatus.UNAUTHORIZED);$/;"	m
 expect	tests/integration/authentication.test.ts	/^    expect(response.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
+expect	tests/integration/booking.test.ts	/^        expect(res.body).toEqual({$/;"	m
+expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.FORBIDDEN);$/;"	m
+expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.OK);$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.body).toEqual({$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
 expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.OK);$/;"	m
@@ -2181,6 +2187,7 @@ if	src/controllers/bookings-controller.ts	/^    if (err.message === "FORBIDDEN")
 if	src/controllers/bookings-controller.ts	/^    if (err.message === "NOT_FOUND") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.name === "NotFoundError") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.name === "notFoundError") {$/;"	m
+if	src/controllers/bookings-controller.ts	/^  if (!roomId) {$/;"	m
 if	src/controllers/enrollments-controller.ts	/^    if (error.name === "NotFoundError") {$/;"	m
 if	src/controllers/hotel-controller.ts	/^    if (error.name === "CannotListHotelsError") {$/;"	m
 if	src/controllers/hotel-controller.ts	/^    if (error.name === "NotFoundError") {$/;"	m
@@ -2239,6 +2246,7 @@ include	src/repositories/hotel-repository/index.ts	/^    include: {$/;"	m
 include	src/repositories/ticket-repository/index.ts	/^    include: {$/;"	m
 include	tests/factories/enrollments-factory.ts	/^    include: {$/;"	m
 includesHotel	tests/factories/tickets-factory.ts	/^      includesHotel: faker.datatype.boolean(),$/;"	m
+includesHotel	tests/factories/tickets-factory.ts	/^      includesHotel: false,$/;"	m
 includesHotel	tests/factories/tickets-factory.ts	/^      includesHotel: true,$/;"	m
 includesHotel	tests/integration/tickets.test.ts	/^          includesHotel: ticketType.includesHotel,$/;"	m
 indent	.eslintrc.js	/^    indent: ["error", 2],$/;"	P
@@ -2262,6 +2270,12 @@ it	tests/integration/authentication.test.ts	/^    it("should respond with status
 it	tests/integration/authentication.test.ts	/^    it("should respond with status 401 if there is no user for given email", async () => {$/;"	m
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not given", async () => {$/;"	m
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not valid", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 200 when booking is valid", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if no enrollment", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if room is full", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if ticket doesn't include hotel", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if ticket is remote", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if ticket isn't paid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^    it("should respond with status 200 when booking is valid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^    it("should respond with status 400 if body is invalid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^    it("should respond with status 400 if no body", async () => {$/;"	m

@@ -5,3 +5,6 @@ node_modules
 yarn.lock
 .vscode
 coverage
+tags
+tags.lock
+tags.temp

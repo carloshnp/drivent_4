@@ -53,7 +53,7 @@ export async function updateBookings(req: AuthenticatedRequest, res: Response) {
     if (err.message === "FORBIDDEN") {
       return res.sendStatus(httpStatus.FORBIDDEN);
     }
-    if (err.name === "notFoundError") {
+    if (err.name === "NotFoundError") {
       return res.sendStatus(httpStatus.NOT_FOUND);
     }
     return res.sendStatus(httpStatus.BAD_REQUEST);

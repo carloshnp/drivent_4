@@ -1758,7 +1758,6 @@ birthday	tests/integration/enrollments.test.ts	/^        birthday: enrollment.bi
 birthday	tests/integration/enrollments.test.ts	/^        birthday: faker.date.past().toISOString(),$/;"	m
 birthday	tests/schemas/enrollments-schemas.test.ts	/^    birthday: faker.date.past().toISOString(),$/;"	m
 bookingId	tests/integration/booking.test.ts	/^          bookingId: expect.any(Number)$/;"	m
-bookingId	tests/integration/booking.test.ts	/^        bookingId: expect.any(Number)$/;"	m
 bookingRepository	src/services/bookings-service/index.ts	/^import bookingRepository from "@\/repositories\/booking-repository";$/;"	I
 bookingService	src/controllers/bookings-controller.ts	/^import bookingService from "@\/services\/bookings-service";$/;"	I
 canEnrollOrFail	src/services/users-service/index.ts	/^async function canEnrollOrFail() {$/;"	f
@@ -1974,6 +1973,7 @@ expect	tests/integration/authentication.test.ts	/^        expect(response.status
 expect	tests/integration/authentication.test.ts	/^      expect(response.status).toBe(httpStatus.UNAUTHORIZED);$/;"	m
 expect	tests/integration/authentication.test.ts	/^    expect(response.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
 expect	tests/integration/booking.test.ts	/^        expect(res.body).toEqual({$/;"	m
+expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.FORBIDDEN); $/;"	m
 expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.FORBIDDEN);$/;"	m
 expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.NOT_FOUND);$/;"	m
 expect	tests/integration/booking.test.ts	/^        expect(res.status).toBe(httpStatus.OK);$/;"	m
@@ -2188,7 +2188,6 @@ if	prisma/seed.ts	/^  if (!event) {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.message === "FORBIDDEN") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.message === "NOT_FOUND") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.name === "NotFoundError") {$/;"	m
-if	src/controllers/bookings-controller.ts	/^    if (err.name === "notFoundError") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^  if (!bookingId) {$/;"	m
 if	src/controllers/bookings-controller.ts	/^  if (!roomId) {$/;"	m
 if	src/controllers/enrollments-controller.ts	/^    if (error.name === "NotFoundError") {$/;"	m
@@ -2274,6 +2273,7 @@ it	tests/integration/authentication.test.ts	/^    it("should respond with status
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not given", async () => {$/;"	m
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not valid", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^      it("should respond with status 200 when booking is valid", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if no booking", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if no enrollment", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if room is full", async () => {$/;"	m
 it	tests/integration/booking.test.ts	/^      it("should respond with status 403 if ticket doesn't include hotel", async () => {$/;"	m

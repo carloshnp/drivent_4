@@ -160,10 +160,12 @@ addressDetail	tests/integration/enrollments.test.ts	/^          addressDetail: f
 addressDetail	tests/schemas/enrollments-schemas.test.ts	/^            addressDetail: faker.datatype.number(),$/;"	m
 addressDetail	tests/schemas/enrollments-schemas.test.ts	/^      addressDetail: faker.lorem.sentence(),$/;"	m
 addressRepository	src/services/enrollments-service/index.ts	/^import addressRepository, { CreateAddressParams } from "@\/repositories\/address-repository";$/;"	I
+afterAll	tests/integration/booking.test.ts	/^afterAll(async () => {$/;"	m
 alwaysTryTypes	.eslintrc.js	/^        alwaysTryTypes: true,$/;"	P
 anonymous	.eslintrc.js	/^        anonymous: "never",$/;"	P
 app	src/server.ts	/^import app, { init } from "@\/app";$/;"	I
 app	tests/integration/authentication.test.ts	/^import app, { init } from "@\/app";$/;"	I
+app	tests/integration/booking.test.ts	/^import app, { init } from "@\/app";$/;"	I
 app	tests/integration/enrollments.test.ts	/^import app, { init } from "@\/app";$/;"	I
 app	tests/integration/event.test.ts	/^import app, { init } from "@\/app";$/;"	I
 app	tests/integration/health.test.ts	/^import app, { init } from "@\/app";$/;"	I
@@ -186,6 +188,7 @@ bcrypt	src/services/users-service/index.ts	/^import bcrypt from "bcrypt";$/;"	I
 bcrypt	tests/factories/users-factory.ts	/^import bcrypt from "bcrypt";$/;"	I
 bcrypt	tests/services/users-service.test.ts	/^import bcrypt from "bcrypt";$/;"	I
 beforeAll	tests/integration/authentication.test.ts	/^beforeAll(async () => {$/;"	m
+beforeAll	tests/integration/booking.test.ts	/^beforeAll(async () => {$/;"	m
 beforeAll	tests/integration/enrollments.test.ts	/^beforeAll(async () => {$/;"	m
 beforeAll	tests/integration/event.test.ts	/^beforeAll(async () => {$/;"	m
 beforeAll	tests/integration/health.test.ts	/^beforeAll(async () => {$/;"	m
@@ -196,6 +199,7 @@ beforeAll	tests/integration/users.test.ts	/^      beforeAll(async () => {$/;"	m
 beforeAll	tests/integration/users.test.ts	/^beforeAll(async () => {$/;"	m
 beforeAll	tests/services/authentication-service.test.ts	/^beforeAll(async () => {$/;"	m
 beforeAll	tests/services/users-service.test.ts	/^beforeAll(async () => {$/;"	m
+beforeEach	tests/integration/booking.test.ts	/^beforeEach(async () => {$/;"	m
 beforeEach	tests/integration/hotels.test.ts	/^beforeEach(async () => {$/;"	m
 beforeEach	tests/integration/payments.test.ts	/^beforeEach(async () => {$/;"	m
 beforeEach	tests/integration/tickets.test.ts	/^beforeEach(async () => {$/;"	m
@@ -205,6 +209,7 @@ birthday	tests/integration/enrollments.test.ts	/^            birthday: dayjs(bod
 birthday	tests/integration/enrollments.test.ts	/^        birthday: enrollment.birthday.toISOString(),$/;"	m
 birthday	tests/integration/enrollments.test.ts	/^        birthday: faker.date.past().toISOString(),$/;"	m
 birthday	tests/schemas/enrollments-schemas.test.ts	/^    birthday: faker.date.past().toISOString(),$/;"	m
+bookingId	tests/integration/booking.test.ts	/^        bookingId: expect.any(Number)$/;"	m
 bookingRepository	src/services/bookings-service/index.ts	/^import bookingRepository from "@\/repositories\/booking-repository";$/;"	I
 bookingService	src/controllers/bookings-controller.ts	/^import bookingService from "@\/services\/bookings-service";$/;"	I
 canEnrollOrFail	src/services/users-service/index.ts	/^async function canEnrollOrFail() {$/;"	f
@@ -309,6 +314,8 @@ debug	.husky/_/husky.sh	/^  debug () {$/;"	f
 describe	tests/integration/authentication.test.ts	/^    describe("when credentials are valid", () => {$/;"	m
 describe	tests/integration/authentication.test.ts	/^  describe("when body is valid", () => {$/;"	m
 describe	tests/integration/authentication.test.ts	/^describe("POST \/auth\/sign-in", () => {$/;"	m
+describe	tests/integration/booking.test.ts	/^  describe("when token is valid", () => {$/;"	m
+describe	tests/integration/booking.test.ts	/^describe("POST \/booking", () => {$/;"	m
 describe	tests/integration/enrollments.test.ts	/^    describe("when body is invalid", () => {$/;"	m
 describe	tests/integration/enrollments.test.ts	/^    describe("when body is valid", () => {$/;"	m
 describe	tests/integration/enrollments.test.ts	/^  describe("when token is valid", () => {$/;"	m
@@ -401,6 +408,9 @@ expect	tests/integration/authentication.test.ts	/^        expect(response.body.u
 expect	tests/integration/authentication.test.ts	/^        expect(response.status).toBe(httpStatus.OK);$/;"	m
 expect	tests/integration/authentication.test.ts	/^      expect(response.status).toBe(httpStatus.UNAUTHORIZED);$/;"	m
 expect	tests/integration/authentication.test.ts	/^    expect(response.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
+expect	tests/integration/booking.test.ts	/^      expect(res.body).toEqual({$/;"	m
+expect	tests/integration/booking.test.ts	/^      expect(res.status).toBe(httpStatus.OK);$/;"	m
+expect	tests/integration/booking.test.ts	/^    expect(res.status).toBe(httpStatus.UNAUTHORIZED);$/;"	m
 expect	tests/integration/enrollments.test.ts	/^        expect(addresses.length).toEqual(1);$/;"	m
 expect	tests/integration/enrollments.test.ts	/^        expect(enrollment).toBeDefined();$/;"	m
 expect	tests/integration/enrollments.test.ts	/^        expect(response.status).toBe(httpStatus.BAD_REQUEST);$/;"	m
@@ -489,6 +499,7 @@ faker	tests/factories/payments-factory.ts	/^import faker from "@faker-js\/faker"
 faker	tests/factories/tickets-factory.ts	/^import faker from "@faker-js\/faker";$/;"	I
 faker	tests/factories/users-factory.ts	/^import faker from "@faker-js\/faker";$/;"	I
 faker	tests/integration/authentication.test.ts	/^import faker from "@faker-js\/faker";$/;"	I
+faker	tests/integration/booking.test.ts	/^import faker from "@faker-js\/faker";$/;"	I
 faker	tests/integration/enrollments.test.ts	/^import faker from "@faker-js\/faker";$/;"	I
 faker	tests/integration/hotels.test.ts	/^import faker from "@faker-js\/faker";$/;"	I
 faker	tests/integration/payments.test.ts	/^import faker from "@faker-js\/faker";$/;"	I
@@ -555,6 +566,7 @@ httpStatus	src/middlewares/authentication-middleware.ts	/^import httpStatus from
 httpStatus	src/middlewares/error-handling-middleware.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	src/middlewares/validation-middleware.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/authentication.test.ts	/^import httpStatus from "http-status";$/;"	I
+httpStatus	tests/integration/booking.test.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/enrollments.test.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/event.test.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/health.test.ts	/^import httpStatus from "http-status";$/;"	I
@@ -659,6 +671,10 @@ it	tests/integration/authentication.test.ts	/^    it("should respond with status
 it	tests/integration/authentication.test.ts	/^    it("should respond with status 401 if there is no user for given email", async () => {$/;"	m
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not given", async () => {$/;"	m
 it	tests/integration/authentication.test.ts	/^  it("should respond with status 400 when body is not valid", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^    it("should respond with status 200 when booking is valid", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if no session", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if no token", async () => {$/;"	m
+it	tests/integration/booking.test.ts	/^  it("should respond with status 401 if token is invalid", async () => {$/;"	m
 it	tests/integration/enrollments.test.ts	/^      it("should respond with status 200 and update enrollment if there is one already", async () => {$/;"	m
 it	tests/integration/enrollments.test.ts	/^      it("should respond with status 201 and create new enrollment if there is not any", async () => {$/;"	m
 it	tests/integration/enrollments.test.ts	/^      it("should respond with status 400 and create new enrollment if there is not any", async () => {$/;"	m
@@ -920,6 +936,7 @@ street	tests/integration/enrollments.test.ts	/^          street: faker.address.s
 street	tests/schemas/enrollments-schemas.test.ts	/^            street: faker.datatype.number(),$/;"	m
 street	tests/schemas/enrollments-schemas.test.ts	/^      street: faker.address.streetName(),$/;"	m
 supertest	tests/integration/authentication.test.ts	/^import supertest from "supertest";$/;"	I
+supertest	tests/integration/booking.test.ts	/^import supertest from "supertest";$/;"	I
 supertest	tests/integration/enrollments.test.ts	/^import supertest from "supertest";$/;"	I
 supertest	tests/integration/event.test.ts	/^import supertest from "supertest";$/;"	I
 supertest	tests/integration/health.test.ts	/^import supertest from "supertest";$/;"	I

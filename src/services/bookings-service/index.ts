@@ -9,7 +9,7 @@ async function getBooking(userId: number) {
 }
 
 async function postBooking(userId: number, roomId: number) {
-  const booking = await bookingRepository.postBooking(roomId, userId);
+  const booking = await bookingRepository.postBooking(userId, roomId);
   return booking;
 }
 

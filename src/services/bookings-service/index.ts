@@ -13,9 +13,19 @@ async function postBooking(userId: number, roomId: number) {
   return booking;
 }
 
+async function updateBooking(userId: number, roomId: number, bookingId: number) {
+  const booking = await bookingRepository.getBooking(userId);
+  if(!booking) {
+    throw new Error ("FORBIDDEN");
+  }
+  const updatedBooking = await bookingRepository.updateBooking(roomId, bookingId);
+  return updatedBooking;
+}
+
 const bookingService = {
   getBooking,
-  postBooking
+  postBooking,
+  updateBooking
 };
 
 export default bookingService;

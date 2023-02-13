@@ -23,3 +23,15 @@ export async function postBookings(req: AuthenticatedRequest, res: Response) {
     return res.sendStatus(httpStatus.NOT_FOUND);
   }
 }
+
+export async function updateBookings(req: AuthenticatedRequest, res: Response) {
+  const { userId } = req;
+  const { roomId } = req.body;
+  const { bookingId } = req.params;
+  try {
+    const updatedBooking = bookingService.updatedBooking(userId, roomId, parseInt(bookingId));
+    return res.status(httpStatus.OK).send(updatedBooking);
+  } catch (err) {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}

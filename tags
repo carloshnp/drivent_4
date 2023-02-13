@@ -609,6 +609,7 @@ if	src/schemas/enrollments-schemas.ts	/^  if (!isValidMobilePhone(value)) {$/;"	
 if	src/schemas/enrollments-schemas.ts	/^  if (!value) return value;$/;"	m
 if	src/services/authentication-service/index.ts	/^  if (!isPasswordValid) throw invalidCredentialsError();$/;"	m
 if	src/services/authentication-service/index.ts	/^  if (!user) throw invalidCredentialsError();$/;"	m
+if	src/services/bookings-service/index.ts	/^  if(!booking) {$/;"	m
 if	src/services/bookings-service/index.ts	/^  if(!userBooking) {$/;"	m
 if	src/services/enrollments-service/index.ts	/^  if (!enrollmentWithAddress) throw notFoundError();$/;"	m
 if	src/services/enrollments-service/index.ts	/^  if (!firstAddress) return null;$/;"	m
@@ -951,6 +952,8 @@ unauthorizedError	src/errors/unauthorized-error.ts	/^export function unauthorize
 update	src/repositories/address-repository/index.ts	/^    update: updatedAddress,$/;"	m
 update	src/repositories/enrollment-repository/index.ts	/^    update: updatedEnrollment,$/;"	m
 updateBooking	src/repositories/booking-repository/index.ts	/^async function updateBooking(roomId: number, bookingId: number) {$/;"	f
+updateBooking	src/services/bookings-service/index.ts	/^async function updateBooking(userId: number, roomId: number, bookingId: number) {$/;"	f
+updateBookings	src/controllers/bookings-controller.ts	/^export async function updateBookings(req: AuthenticatedRequest, res: Response) {$/;"	f
 updatedAt	src/repositories/booking-repository/index.ts	/^      updatedAt: new Date()$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString()$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString(),$/;"	m

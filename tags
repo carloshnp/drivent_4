@@ -96,6 +96,7 @@ Payment.value	prisma/migrations/20221116174837_tickets/migration.sql	/^    "valu
 PaymentParams	src/repositories/payment-repository/index.ts	/^export type PaymentParams = Omit<Payment, "id" | "createdAt" | "updatedAt">$/;"	t
 RequestError	src/protocols.ts	/^export type RequestError = {$/;"	t
 Room	prisma/migrations/20221128215237_hotel/migration.sql	/^CREATE TABLE "Room" ($/;"	t
+Room	src/repositories/booking-repository/index.ts	/^      Room: true$/;"	m
 Room.capacity	prisma/migrations/20221128215237_hotel/migration.sql	/^    "capacity" INTEGER NOT NULL,$/;"	F
 Room.createdAt	prisma/migrations/20221128215237_hotel/migration.sql	/^    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,$/;"	F
 Room.hotelId	prisma/migrations/20221128215237_hotel/migration.sql	/^    "hotelId" INTEGER NOT NULL,$/;"	F
@@ -204,6 +205,8 @@ birthday	tests/integration/enrollments.test.ts	/^            birthday: dayjs(bod
 birthday	tests/integration/enrollments.test.ts	/^        birthday: enrollment.birthday.toISOString(),$/;"	m
 birthday	tests/integration/enrollments.test.ts	/^        birthday: faker.date.past().toISOString(),$/;"	m
 birthday	tests/schemas/enrollments-schemas.test.ts	/^    birthday: faker.date.past().toISOString(),$/;"	m
+bookingRepository	src/services/bookings-service/index.ts	/^import bookingRepository from "@\/repositories\/booking-repository";$/;"	I
+bookingService	src/controllers/bookings-controller.ts	/^import bookingService from "@\/services\/bookings-service";$/;"	I
 canEnrollOrFail	src/services/users-service/index.ts	/^async function canEnrollOrFail() {$/;"	f
 cannotEnrollBeforeStartDateError	src/errors/cannot-enroll-before-start-date-error.ts	/^export function cannotEnrollBeforeStartDateError(): ApplicationError {$/;"	f
 cannotListHotelsError	src/errors/cannot-list-hotels-error.ts	/^export function cannotListHotelsError(): ApplicationError {$/;"	f
@@ -515,6 +518,8 @@ getAddress	src/utils/cep-service.ts	/^async function getAddress(cep: string): Pr
 getAddressForUpsert	src/services/enrollments-service/index.ts	/^function getAddressForUpsert(address: CreateAddressParams) {$/;"	f
 getAddressFromCEP	src/controllers/enrollments-controller.ts	/^export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response) {$/;"	f
 getAddressFromCEP	src/services/enrollments-service/index.ts	/^async function getAddressFromCEP(cep: string): Promise<AddressEnrollment> {$/;"	f
+getBooking	src/repositories/booking-repository/index.ts	/^async function getBooking(userId: number) {$/;"	f
+getBooking	src/services/bookings-service/index.ts	/^async function getBooking(userId: number) {$/;"	f
 getBookings	src/controllers/bookings-controller.ts	/^export async function getBookings(req: AuthenticatedRequest, res: Response) {$/;"	f
 getDefaultEvent	src/controllers/events-controller.ts	/^export async function getDefaultEvent(_req: Request, res: Response) {$/;"	f
 getEnrollmentByUser	src/controllers/enrollments-controller.ts	/^export async function getEnrollmentByUser(req: AuthenticatedRequest, res: Response) {$/;"	f
@@ -557,6 +562,7 @@ httpStatus	tests/integration/payments.test.ts	/^import httpStatus from "http-sta
 httpStatus	tests/integration/tickets.test.ts	/^import httpStatus from "http-status";$/;"	I
 httpStatus	tests/integration/users.test.ts	/^import httpStatus from "http-status";$/;"	I
 id	src/controllers/users-controller.ts	/^      id: user.id,$/;"	m
+id	src/repositories/booking-repository/index.ts	/^      id: true,$/;"	m
 id	src/repositories/hotel-repository/index.ts	/^      id: hotelId,$/;"	m
 id	src/repositories/ticket-repository/index.ts	/^      id: ticketId,$/;"	m
 id	tests/integration/authentication.test.ts	/^          id: user.id,$/;"	m
@@ -601,6 +607,7 @@ if	src/schemas/enrollments-schemas.ts	/^  if (!isValidMobilePhone(value)) {$/;"	
 if	src/schemas/enrollments-schemas.ts	/^  if (!value) return value;$/;"	m
 if	src/services/authentication-service/index.ts	/^  if (!isPasswordValid) throw invalidCredentialsError();$/;"	m
 if	src/services/authentication-service/index.ts	/^  if (!user) throw invalidCredentialsError();$/;"	m
+if	src/services/bookings-service/index.ts	/^  if(!userBooking) {$/;"	m
 if	src/services/enrollments-service/index.ts	/^  if (!enrollmentWithAddress) throw notFoundError();$/;"	m
 if	src/services/enrollments-service/index.ts	/^  if (!firstAddress) return null;$/;"	m
 if	src/services/enrollments-service/index.ts	/^  if (!result) {$/;"	m
@@ -873,6 +880,7 @@ restoreMocks	jest.config.js	/^  restoreMocks: true,$/;"	P
 return	src/middlewares/validation-middleware.ts	/^  return (req: Request, res: Response, next: NextFunction) => {$/;"	m
 rules	.eslintrc.js	/^  rules: {$/;"	P
 saveEnvStrToFile	.github/workflows/scripts/generate-env-file.js	/^function saveEnvStrToFile(envStr) {$/;"	F
+select	src/repositories/booking-repository/index.ts	/^    select: {$/;"	m
 selector	.eslintrc.js	/^        selector: "interface",$/;"	P
 semi	.eslintrc.js	/^    semi: ["error", "always"],$/;"	P
 semi	.prettierrc.js	/^  semi: true,$/;"	P
@@ -972,6 +980,7 @@ value	tests/integration/payments.test.ts	/^        value: ticketType.price,$/;"	
 verifyTicketAndEnrollment	src/services/payments-service/index.ts	/^async function verifyTicketAndEnrollment(ticketId: number, userId: number) {$/;"	f
 where	src/middlewares/authentication-middleware.ts	/^      where: {$/;"	m
 where	src/repositories/address-repository/index.ts	/^    where: {$/;"	m
+where	src/repositories/booking-repository/index.ts	/^    where: {$/;"	m
 where	src/repositories/enrollment-repository/index.ts	/^    where: { id: enrollmentId }$/;"	m
 where	src/repositories/enrollment-repository/index.ts	/^    where: { userId },$/;"	m
 where	src/repositories/enrollment-repository/index.ts	/^    where: {$/;"	m

@@ -43,6 +43,9 @@ export async function updateBookings(req: AuthenticatedRequest, res: Response) {
   if (!roomId) {
     return res.sendStatus(httpStatus.BAD_REQUEST);
   }
+  if (!bookingId) {
+    return res.sendStatus(httpStatus.FORBIDDEN);
+  }
   try {
     const updatedBooking = await bookingService.updateBooking(userId, roomId, parseInt(bookingId));
     return res.status(httpStatus.OK).send({ bookingId: updatedBooking.id });

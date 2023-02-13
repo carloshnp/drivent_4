@@ -2189,6 +2189,7 @@ if	src/controllers/bookings-controller.ts	/^    if (err.message === "FORBIDDEN")
 if	src/controllers/bookings-controller.ts	/^    if (err.message === "NOT_FOUND") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.name === "NotFoundError") {$/;"	m
 if	src/controllers/bookings-controller.ts	/^    if (err.name === "notFoundError") {$/;"	m
+if	src/controllers/bookings-controller.ts	/^  if (!bookingId) {$/;"	m
 if	src/controllers/bookings-controller.ts	/^  if (!roomId) {$/;"	m
 if	src/controllers/enrollments-controller.ts	/^    if (error.name === "NotFoundError") {$/;"	m
 if	src/controllers/hotel-controller.ts	/^    if (error.name === "CannotListHotelsError") {$/;"	m

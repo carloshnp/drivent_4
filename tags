@@ -97,6 +97,7 @@ PaymentParams	src/repositories/payment-repository/index.ts	/^export type Payment
 RequestError	src/protocols.ts	/^export type RequestError = {$/;"	t
 Room	prisma/migrations/20221128215237_hotel/migration.sql	/^CREATE TABLE "Room" ($/;"	t
 Room	src/repositories/booking-repository/index.ts	/^      Room: true$/;"	m
+Room	tests/integration/booking.test.ts	/^        Room: {$/;"	m
 Room.capacity	prisma/migrations/20221128215237_hotel/migration.sql	/^    "capacity" INTEGER NOT NULL,$/;"	F
 Room.createdAt	prisma/migrations/20221128215237_hotel/migration.sql	/^    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,$/;"	F
 Room.hotelId	prisma/migrations/20221128215237_hotel/migration.sql	/^    "hotelId" INTEGER NOT NULL,$/;"	F
@@ -216,6 +217,7 @@ canEnrollOrFail	src/services/users-service/index.ts	/^async function canEnrollOr
 cannotEnrollBeforeStartDateError	src/errors/cannot-enroll-before-start-date-error.ts	/^export function cannotEnrollBeforeStartDateError(): ApplicationError {$/;"	f
 cannotListHotelsError	src/errors/cannot-list-hotels-error.ts	/^export function cannotListHotelsError(): ApplicationError {$/;"	f
 capacity	tests/factories/hotels-factory.ts	/^      capacity: 3,$/;"	m
+capacity	tests/integration/booking.test.ts	/^          capacity: expect.any(Number),$/;"	m
 capacity	tests/integration/hotels.test.ts	/^          capacity: createdRoom.capacity,$/;"	m
 cardIssuer	src/services/payments-service/index.ts	/^    cardIssuer: cardData.issuer,$/;"	m
 cardIssuer	tests/factories/payments-factory.ts	/^      cardIssuer: faker.name.findName(),$/;"	m
@@ -260,6 +262,7 @@ create	src/repositories/enrollment-repository/index.ts	/^    create: createdEnro
 create	src/repositories/session-repository/index.ts	/^async function create(data: Prisma.SessionUncheckedCreateInput) {$/;"	f
 create	src/repositories/user-repository/index.ts	/^async function create(data: Prisma.UserUncheckedCreateInput) {$/;"	f
 create	tests/factories/enrollments-factory.ts	/^        create: {$/;"	m
+createBooking	tests/factories/booking-factory.ts	/^export async function createBooking(userId: number, roomId: number) {$/;"	f
 createEnrollmentSchema	src/schemas/enrollments-schemas.ts	/^export const createEnrollmentSchema = Joi.object<CreateOrUpdateEnrollmentWithAddress>({$/;"	v
 createEnrollmentWithAddress	tests/factories/enrollments-factory.ts	/^export async function createEnrollmentWithAddress(user?: User) {$/;"	f
 createEvent	tests/factories/events-factory.ts	/^export function createEvent(params: Partial<Event> = {}): Promise<Event> {$/;"	f
@@ -280,6 +283,7 @@ createTicketTypeWithHotel	tests/factories/tickets-factory.ts	/^export async func
 createUser	src/services/users-service/index.ts	/^export async function createUser({ email, password }: CreateUserParams): Promise<User> {$/;"	f
 createUser	tests/factories/users-factory.ts	/^export async function createUser(params: Partial<User> = {}): Promise<User> {$/;"	f
 createUserSchema	src/schemas/users-schemas.ts	/^export const createUserSchema = Joi.object<CreateUserParams>({$/;"	v
+createdAt	tests/integration/booking.test.ts	/^          createdAt: expect.any(String),$/;"	m
 createdAt	tests/integration/hotels.test.ts	/^          createdAt: createdHotel.createdAt.toISOString(),$/;"	m
 createdAt	tests/integration/hotels.test.ts	/^          createdAt: createdRoom.createdAt.toISOString(),$/;"	m
 createdAt	tests/integration/hotels.test.ts	/^        createdAt: createdHotel.createdAt.toISOString(),$/;"	m
@@ -298,6 +302,7 @@ data	src/protocols.ts	/^  data: object | null,$/;"	m
 data	src/repositories/booking-repository/index.ts	/^    data: {$/;"	m
 data	src/repositories/payment-repository/index.ts	/^    data: {$/;"	m
 data	src/repositories/ticket-repository/index.ts	/^    data: {$/;"	m
+data	tests/factories/booking-factory.ts	/^    data: {$/;"	m
 data	tests/factories/enrollments-factory.ts	/^    data: {$/;"	m
 data	tests/factories/events-factory.ts	/^    data: {$/;"	m
 data	tests/factories/hotels-factory.ts	/^    data: {$/;"	m
@@ -315,6 +320,7 @@ describe	tests/integration/authentication.test.ts	/^    describe("when credentia
 describe	tests/integration/authentication.test.ts	/^  describe("when body is valid", () => {$/;"	m
 describe	tests/integration/authentication.test.ts	/^describe("POST \/auth\/sign-in", () => {$/;"	m
 describe	tests/integration/booking.test.ts	/^  describe("when token is valid", () => {$/;"	m
+describe	tests/integration/booking.test.ts	/^describe("GET \/booking", () => {$/;"	m
 describe	tests/integration/booking.test.ts	/^describe("POST \/booking", () => {$/;"	m
 describe	tests/integration/enrollments.test.ts	/^    describe("when body is invalid", () => {$/;"	m
 describe	tests/integration/enrollments.test.ts	/^    describe("when body is valid", () => {$/;"	m
@@ -551,6 +557,7 @@ getTickets	src/controllers/tickets-controller.ts	/^export async function getTick
 getUserOrFail	src/services/authentication-service/index.ts	/^async function getUserOrFail(email: string): Promise<GetUserOrFailResult> {$/;"	f
 handleApplicationErrors	src/middlewares/error-handling-middleware.ts	/^export function handleApplicationErrors(err: ApplicationError | Error, _req: Request, res: Response) {$/;"	f
 hotelId	tests/factories/hotels-factory.ts	/^      hotelId: hotelId,$/;"	m
+hotelId	tests/integration/booking.test.ts	/^          hotelId: expect.any(Number),$/;"	m
 hotelId	tests/integration/hotels.test.ts	/^          hotelId: createdHotel.id,$/;"	m
 hotelRepository	src/services/hotels-service/index.ts	/^import hotelRepository from "@\/repositories\/hotel-repository";$/;"	I
 hotelService	src/controllers/hotel-controller.ts	/^import hotelService from "@\/services\/hotels-service";$/;"	I
@@ -580,6 +587,8 @@ id	src/repositories/booking-repository/index.ts	/^      id: true,$/;"	m
 id	src/repositories/hotel-repository/index.ts	/^      id: hotelId,$/;"	m
 id	src/repositories/ticket-repository/index.ts	/^      id: ticketId,$/;"	m
 id	tests/integration/authentication.test.ts	/^          id: user.id,$/;"	m
+id	tests/integration/booking.test.ts	/^          id: expect.any(Number),$/;"	m
+id	tests/integration/booking.test.ts	/^        id: expect.any(Number),$/;"	m
 id	tests/integration/enrollments.test.ts	/^          id: enrollment.Address[0].id,$/;"	m
 id	tests/integration/enrollments.test.ts	/^        id: enrollment.id,$/;"	m
 id	tests/integration/event.test.ts	/^      id: event.id,$/;"	m
@@ -830,6 +839,7 @@ name	tests/factories/hotels-factory.ts	/^      name: "1020",$/;"	m
 name	tests/factories/hotels-factory.ts	/^      name: faker.name.findName(),$/;"	m
 name	tests/factories/payments-factory.ts	/^    name: faker.name.findName(),$/;"	m
 name	tests/factories/tickets-factory.ts	/^      name: faker.name.findName(),$/;"	m
+name	tests/integration/booking.test.ts	/^          name: expect.any(String),$/;"	m
 name	tests/integration/enrollments.test.ts	/^            name: body.name,$/;"	m
 name	tests/integration/enrollments.test.ts	/^        name: enrollment.name,$/;"	m
 name	tests/integration/enrollments.test.ts	/^        name: faker.name.findName(),$/;"	m
@@ -972,6 +982,8 @@ updateBooking	src/repositories/booking-repository/index.ts	/^async function upda
 updateBooking	src/services/bookings-service/index.ts	/^async function updateBooking(userId: number, roomId: number, bookingId: number) {$/;"	f
 updateBookings	src/controllers/bookings-controller.ts	/^export async function updateBookings(req: AuthenticatedRequest, res: Response) {$/;"	f
 updatedAt	src/repositories/booking-repository/index.ts	/^      updatedAt: new Date()$/;"	m
+updatedAt	tests/factories/booking-factory.ts	/^      updatedAt: new Date()$/;"	m
+updatedAt	tests/integration/booking.test.ts	/^          updatedAt: expect.any(String)$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString()$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdHotel.updatedAt.toISOString(),$/;"	m
 updatedAt	tests/integration/hotels.test.ts	/^          updatedAt: createdRoom.updatedAt.toISOString(),$/;"	m

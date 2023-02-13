@@ -1,5 +1,5 @@
 import app, { init } from "@/app";
-import { createEnrollmentWithAddress, createHotel, createPayment, createRoomWithHotelId, createTicket, createTicketTypeWithHotel, createUser } from "../factories";
+import { createBooking, createEnrollmentWithAddress, createHotel, createPayment, createRoomWithHotelId, createTicket, createTicketTypeWithHotel, createUser } from "../factories";
 import faker from "@faker-js/faker";
 import httpStatus from "http-status";
 import supertest from "supertest";
@@ -55,6 +55,35 @@ describe("POST /booking", () => {
       expect(res.status).toBe(httpStatus.OK);
       expect(res.body).toEqual({
         bookingId: expect.any(Number)
+      });
+    });
+  });
+});
+
+describe("GET /booking", () => {
+  describe("when token is valid", () => {
+    it("should respond with status 200 when booking is valid", async () => {
+      const user = await createUser();
+      const token = await generateValidToken(user);
+      const enrollment = await createEnrollmentWithAddress(user);
+      const ticketType = await createTicketTypeWithHotel();
+      const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+      const payment = await createPayment(ticket.id, ticketType.price);
+      const hotel = await createHotel();
+      const room = await createRoomWithHotelId(hotel.id);
+      const booking = await createBooking(user.id, room.id);
+      const res = await server.get("/booking").set("Authorization", `Bearer ${token}`);
+      expect(res.status).toBe(httpStatus.OK);
+      expect(res.body).toEqual({
+        id: expect.any(Number),
+        Room: {
+          id: expect.any(Number),
+          name: expect.any(String),
+          capacity: expect.any(Number),
+          hotelId: expect.any(Number),
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String)
+        }
       });
     });
   });
